@@ -1,0 +1,8 @@
+{
+  "name": "DTS JS-Client Dev Container",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:24-bookworm",
+  "forwardPorts": [5173],
+  "features": {
+  },
+  "postCreateCommand": "npm ci"
+}
