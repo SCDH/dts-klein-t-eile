@@ -1,8 +1,34 @@
+<!DOCTYPE html>
 <html>
-  <head>
-    <title>DTS Mega Client</title>
-  </head>
-  <body>
-    Hello!
-  </body>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>DTS Klein T eilt</title>
+  <script src="https://cdn.jsdelivr.net/npm/htmx.org@2.0.11/dist/htmx.js" integrity="sha384-gmJEF2eAKY4e+FDN+qtKIivWyb6ANwDB7JUdUybKgQspPKyEX/pIRZG/0uaRoW2C" crossorigin="anonymous"></script>
+  <!--script type="module" src="node_modules/htmx.org/dist/htmx.js"></script-->
+  <script type="module" src="node_modules/htmx.org/dist/ext/client-side-templates.js"></script>
+  <script type="module" src="node_modules/nunjucks"></script>
+  <meta name="htmx-config" content='{"selfRequestsOnly":false}'>
+</head>
+<body>
+  <div hx-ext="client-side-templates">
+    <button hx-get="http://localhost:8080/file/bible/collection"
+            hx-swap="innerHTML"
+            hx-target="#collection"
+            nunjucks-template="t-collection"
+	    >
+      Start
+    </button>
+
+    <div id="collection">metadata</div>
+
+    <script id="t-collection" type="nunjucks">
+      <div>{{ @type}}</div>
+      <div>{{ title }}</div>
+    </script>
+
+    
+    
+  </div>
+</body>
 </html>
