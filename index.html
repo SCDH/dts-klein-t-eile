@@ -3,13 +3,15 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
-  <title>DTS Klein T eilt</title>
+  <title>DTS Klein T eile</title>
   <script type="module" src="node_modules/htmx-ext-client-side-templates"></script>
-  <script type="module" src="node_modules/nunjucks"></script>
+  <script type="module" src="src/index.js"></script>
   <meta name="htmx-config" content='{"selfRequestsOnly":false}'>
+
 </head>
 <body>
   <div hx-ext="client-side-templates">
+
     <button hx-get="http://localhost:8080/file/bible/collection"
             hx-swap="innerHTML"
             hx-target="#collection"
