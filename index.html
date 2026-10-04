@@ -20,15 +20,35 @@
       Start
     </button>
 
-    <div id="collection">metadata</div>
+    <div class="collection-tree">
+      <ul id="collection" class="collection">
+      </ul>
+    </div>
 
-    <script id="t-collection" type="nunjucks">
-      <div>{{ @type }}</div>
-      <div>{{ title }}</div>
-    </script>
-
-    
-    
   </div>
+
+  <script id="t-collection" type="nunjucks">
+    {% macro metadata(member) %}
+    <div>{{ member.@type }}</div>
+    <div>{{ member.title }}</div>
+    {% endmacro %}
+
+    <li class="collection-item {{ @type }}">
+    {{ metadata(getContext()) }}
+
+    {% if member %}
+    <ul class="collection">
+    {% for m in member %}
+    <li class="collection-item {{ m.@type }}">
+    {{ metadata(m) }}
+    </li>
+    {% endfor %}
+    </ul>
+    {% endif %}
+
+    </li>
+
+  </script>
+
 </body>
 </html>
