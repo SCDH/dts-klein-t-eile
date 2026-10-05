@@ -30,10 +30,11 @@ devcontainer exec npm run dev -- --host
 
 Visit the *DTS Klein T eilt* on http://127.x.x.x:5173/ in your
 browser. The exact address will be printed to the console by the dev
-server. The `--host` switch to vite (the dev server tells it to listen
-not only on the container's loopback device 127.0.0.1, but on each of
-the containers network devices. You can inspect the network with
-`docker network inspect bridge`.
+server. The `--host` switch to tells the dev server
+([vite](https://vite.dev/)) to listen not only on the container's
+loopback device 127.0.0.1, but on each of the containers network
+devices. You can inspect the network with `docker network inspect
+bridge`.
 
 Get a shell in the container:
 
