@@ -6,6 +6,8 @@ const loader = new nunjucks.WebLoader('/templates');
 
 const env = new nunjucks.Environment(loader);
 
+var collectionRequests = 0;
+
 console.log("env", env);
 
 env.addFilter('setSelf', function() {
@@ -27,6 +29,11 @@ env.addGlobal('uriTemplate', function(template, parameters) {
 env.addGlobal('toFragmentId', function(uri) {
     var segments = uri.split("/");
     return segments.pop();
+});
+
+env.addGlobal('collectionRequestNo', function() {
+    collectionRequests++;
+    return collectionRequests;
 });
 
 console.log(env);

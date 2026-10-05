@@ -33,24 +33,29 @@
     <div>{{ member.title }}</div>
     {% endmacro %}
 
+    {% macro collectionItem(member, id) %}
+    <li id="collection-item-{{ id }}" class="collection-item {{ member.@type }}">
+    {{ metadata(member) }}
+    {% if member.@type == 'Collection' %}
+    <button
+    hx-get="{{ uriTemplate(member.collection, {}) }}"
+    hx-swap="innerHTML"
+    hx-target="#collection-item-{{ id }}"
+    nunjucks-template="t-collection"
+    >members</button>
+    {% endif %}
+    </li>
+    {% endmacro %}
+
+
+
     <li class="collection-item {{ @type }}">
     {{ metadata(getContext()) }}
 
     {% if member %}
     <ul class="collection">
     {% for m in member %}
-    <li id="{{ toFragmentId(m.@id) }}" class="collection-item {{ m.@type }}">
-    {{ metadata(m) }}
-    {% if m.@type == 'Collection' %}
-    <button>{{ m.collection }}</button>
-    <button
-    hx-get="{{ uriTemplate(m.collection, {}) }}"
-    hx-swap="innerHTML"
-    hx-target="#{{ toFragmentId(m.@id) }}"
-    nunjucks-template="t-collection"
-    >{{ uriTemplate(m.collection, {}) }}</button>
-    {% endif %}
-    </li>
+    {{ collectionItem(m, collectionRequestNo()) }}
     {% endfor %}
     </ul>
     {% endif %}
