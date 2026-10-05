@@ -39,8 +39,17 @@
     {% if member %}
     <ul class="collection">
     {% for m in member %}
-    <li class="collection-item {{ m.@type }}">
+    <li id="{{ toFragmentId(m.@id) }}" class="collection-item {{ m.@type }}">
     {{ metadata(m) }}
+    {% if m.@type == 'Collection' %}
+    <button>{{ m.collection }}</button>
+    <button
+    hx-get="{{ uriTemplate(m.collection, {}) }}"
+    hx-swap="innerHTML"
+    hx-target="#{{ toFragmentId(m.@id) }}"
+    nunjucks-template="t-collection"
+    >{{ uriTemplate(m.collection, {}) }}</button>
+    {% endif %}
     </li>
     {% endfor %}
     </ul>
