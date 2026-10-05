@@ -40,3 +40,16 @@ console.log(env);
 
 // provide configured global numjucks object via window
 window.nunjucks = env;
+
+
+window.addEventListener('load', (event) => {
+    const entryForm = document.getElementById("entry-form");
+    entryForm.addEventListener("submit", function(ev) {
+	ev.preventDefault();
+	var uriForm = document.getElementById("entry-endpoint-uri");
+	var uri = uriForm.value;
+	console.log("entry endpoint form submit intercepted", uri);
+    });
+});
+
+var entryEndpoint = undefined;

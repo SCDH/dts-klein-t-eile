@@ -12,6 +12,13 @@
 <body>
   <div hx-ext="client-side-templates">
 
+    <div class="entry-form-container">
+      <form id="entry-form" method="post">
+	<input id="entry-endpoint-uri" name="base-url" type="string" value="http://localhost:8080/file/bible/entry"></input>
+	<input type="submit" value="Go!"></input>
+      </form>
+    </div>
+
     <button hx-get="http://localhost:8080/file/bible/collection"
             hx-swap="innerHTML"
             hx-target="#collection"
