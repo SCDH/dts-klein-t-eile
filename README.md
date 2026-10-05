@@ -35,6 +35,13 @@ not only on the container's loopback device 127.0.0.1, but on each of
 the containers network devices. You can inspect the network with
 `docker network inspect bridge`.
 
+Get a shell in the container:
+
+```shell
+devcontainer exec bash
+```
+
+
 If you are more concered about installing the Dev Container CLI than
 about exposing your computer to supply chain attacks, feel free to
 simply run `npm i && npm run dev`.
