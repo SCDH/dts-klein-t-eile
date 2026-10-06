@@ -13,6 +13,18 @@
     hx-target="#collection-item-{{ id }}"
     nunjucks-template="collection.njk"
     >{{ uriTemplate(member.collection, {}) }}</button>
+  {% elif member.@type == 'Resource' %}
+
+  <div class="media-types">
+    {% for mediaType in member.mediaTypes %}
+    <button
+      title="{{ uriTemplate(member.document, { "mediaType": mediaType }) }}"
+      style="cursor:pointer"
+      >{{ mediaType }}</button>
+    <span class="delim"> </span>
+    {% endfor %}
+  </div>
+
   {% endif %}
 </li>
 {% endmacro %}
@@ -20,7 +32,7 @@
 
 <li class="collection-item {{ @type }}">
   {{ metadata(getContext()) }}
-  
+
   {% if member %}
   <ul class="collection">
     {% for m in member %}
@@ -28,6 +40,5 @@
     {% endfor %}
   </ul>
   {% endif %}
-  
-</li>
 
+</li>
