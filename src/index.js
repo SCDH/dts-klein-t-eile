@@ -1,6 +1,7 @@
 //import 'nunjucks/browser/nunjucks.min.js';
 import nunjucks from 'nunjucks';
 import { parse } from 'uri-template';
+import 'htmx.org';
 
 const loader = new nunjucks.WebLoader('/templates');
 
@@ -49,6 +50,25 @@ window.addEventListener('load', (event) => {
 	var uriForm = document.getElementById("entry-endpoint-uri");
 	var uri = uriForm.value;
 	console.log("entry endpoint form submit intercepted", uri);
+	fetch(uri)
+	    .then(response => {
+		if (!response.ok) {
+		    alert("request failed: " + uri);
+		} else {
+		    return response.json();
+		}
+	    })
+	    .then(data => {
+		var template = document.getElementById("collection-start").innerHTML;
+		var target = document.getElementById("collection-container");
+		var res = env.renderString(template, data);
+		target.innerHTML = res;
+		// fragments added by js must be processed by htmx
+		htmx.process(target);
+	    })
+	    .catch(error => {
+		alert(error);
+	    });
     });
 });
 

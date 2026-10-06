@@ -14,25 +14,27 @@
 
     <div class="entry-form-container">
       <form id="entry-form" method="post">
-	<input id="entry-endpoint-uri" name="base-url" type="string" value="http://localhost:8080/file/bible/entry"></input>
+	<label for="entry-endpoint-uri">Entry Endpoint URI</label>
+	<input id="entry-endpoint-uri" name="entry-endpoint-uri" type="string" size="60em" value="http://localhost:8080/file/bible/entry"></input>
 	<input type="submit" value="Go!"></input>
       </form>
     </div>
 
-    <button hx-get="http://localhost:8080/file/bible/collection"
-            hx-swap="innerHTML"
-            hx-target="#collection"
-            nunjucks-template="t-collection"
-	    >
-      Start
-    </button>
 
-    <div class="collection-tree">
-      <ul id="collection" class="collection">
-      </ul>
+    <div id="collection-container" class="collection-tree">
     </div>
 
   </div>
+
+  <script id="collection-start" type="nunjucks">
+    <button hx-get="{{ uriTemplate(collection, {}) }}"
+    hx-swap="innerHTML"
+    hx-target="#collection"
+    nunjucks-template="t-collection"
+    >{{ uriTemplate(collection, {}) }}</button>
+    <ul id="collection" class="collection">
+    </ul>
+  </script>
 
   <script id="t-collection" type="nunjucks">
     {% macro metadata(member) %}
@@ -49,11 +51,10 @@
     hx-swap="innerHTML"
     hx-target="#collection-item-{{ id }}"
     nunjucks-template="t-collection"
-    >members</button>
+    >{{ uriTemplate(member.collection, {}) }}</button>
     {% endif %}
     </li>
     {% endmacro %}
-
 
 
     <li class="collection-item {{ @type }}">
