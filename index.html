@@ -26,51 +26,5 @@
 
   </div>
 
-  <script id="collection-start" type="nunjucks">
-    <button hx-get="{{ uriTemplate(collection, {}) }}"
-    hx-swap="innerHTML"
-    hx-target="#collection"
-    nunjucks-template="t-collection"
-    >{{ uriTemplate(collection, {}) }}</button>
-    <ul id="collection" class="collection">
-    </ul>
-  </script>
-
-  <script id="t-collection" type="nunjucks">
-    {% macro metadata(member) %}
-    <div>{{ member.@type }}</div>
-    <div>{{ member.title }}</div>
-    {% endmacro %}
-
-    {% macro collectionItem(member, id) %}
-    <li id="collection-item-{{ id }}" class="collection-item {{ member.@type }}">
-    {{ metadata(member) }}
-    {% if member.@type == 'Collection' %}
-    <button
-    hx-get="{{ uriTemplate(member.collection, {}) }}"
-    hx-swap="innerHTML"
-    hx-target="#collection-item-{{ id }}"
-    nunjucks-template="t-collection"
-    >{{ uriTemplate(member.collection, {}) }}</button>
-    {% endif %}
-    </li>
-    {% endmacro %}
-
-
-    <li class="collection-item {{ @type }}">
-    {{ metadata(getContext()) }}
-
-    {% if member %}
-    <ul class="collection">
-    {% for m in member %}
-    {{ collectionItem(m, collectionRequestNo()) }}
-    {% endfor %}
-    </ul>
-    {% endif %}
-
-    </li>
-
-  </script>
-
 </body>
 </html>

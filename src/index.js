@@ -59,9 +59,8 @@ window.addEventListener('load', (event) => {
 		}
 	    })
 	    .then(data => {
-		var template = document.getElementById("collection-start").innerHTML;
 		var target = document.getElementById("collection-container");
-		var res = env.renderString(template, data);
+		var res = env.render("collection-start.njk", data);
 		target.innerHTML = res;
 		// fragments added by js must be processed by htmx
 		htmx.process(target);
