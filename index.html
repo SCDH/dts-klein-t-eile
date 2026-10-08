@@ -7,10 +7,20 @@
   <script type="module" src="node_modules/htmx-ext-client-side-templates"></script>
   <script type="module" src="src/index.js"></script>
   <meta name="htmx-config" content='{"selfRequestsOnly":false}'>
-
+  <style> 
+    .columns {
+	display: grid;
+	width: 100%;
+	grid-template-columns: 1fr 4fr;
+    }
+    #document {
+	width: 90%;
+	height: 100%;
+    }
+  </style>
 </head>
 <body>
-  <div hx-ext="client-side-templates">
+  <div hx-ext="client-side-templates" class="content-container">
 
     <div class="entry-form-container">
       <form id="entry-form" method="post">
@@ -19,15 +29,17 @@
 	<input type="submit" value="Go!"></input>
       </form>
     </div>
+    <hr/>
 
 
-    <div id="collection-container" class="collection-tree">
+    <div class="columns">
+      <div id="collection-container" class="column collection-tree">
+      </div>
+
+      <div id="document-container">
+	<iframe id="document"></iframe>
+      </div>
     </div>
-
-    <div id="document-container">
-      <iframe id="document"></iframe>
-    </div>
-
 
   </div>
 
