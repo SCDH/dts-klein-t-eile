@@ -1,0 +1,37 @@
+image: harbor.uni-muenster.de/proxy-docker/library/node:latest
+ 
+stages:
+  - test
+  - deploy
+
+
+build-and-run-tests:
+  stage: test
+  cache:
+    key:
+      files:
+        - package-lock.json
+      prefix: npm
+    paths:
+      - node_modules/
+  script:
+    - npm install
+    - npm run build
+    - npm run test
+  artifacts:
+    paths:
+      - dist
+
+
+pages:
+  stage: deploy
+  needs:
+    - build-and-run-tests
+  script:
+    - mkdir -p public
+    - ls -l
+    - ls -lR dist
+    - cp -av --recursive dist/* public/
+  artifacts:
+    paths:
+      - public
