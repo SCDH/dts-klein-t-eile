@@ -16,14 +16,22 @@
   {% elif member.@type == 'Resource' %}
 
   <div class="media-types">
-    {% for mediaType in member.mediaTypes %}
-    <button
-      title="{{ uriTemplate(member.document, { 'mediaType': mediaType }) }}"
-      style="cursor:pointer"
-      hx-on:click="showDocument('{{ uriTemplate( member.document, { 'mediaType': mediaType } ) }}')"
-      >{{ mediaType }}</button>
-    <span class="delim"> </span>
-    {% endfor %}
+    {% if member.mediaTypes %}
+      {% for mediaType in member.mediaTypes %}
+	<button
+	  title="{{ uriTemplate(member.document, { 'mediaType': mediaType }) }}"
+	  style="cursor:pointer"
+	  hx-on:click="showDocument('{{ uriTemplate( member.document, { 'mediaType': mediaType } ) }}')"
+	>{{ mediaType }}</button>
+	<span class="delim"> </span>
+      {% endfor %}
+    {% else %}
+      <button
+	title="{{ uriTemplate(member.document, {}) }}"
+	style="cursor:pointer"
+	hx-on:click="showDocument('{{ uriTemplate( member.document, {}) }}')"
+      >load</button>
+    {% endif %}
   </div>
 
   {% endif %}
