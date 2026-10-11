@@ -42,13 +42,15 @@
 
       <div id="resource-container">
 	<div id="navigation-container">
-	  <button
-	    id="navigation"
-	    style="cursor:pointer"
-	    hx-target="#navigation"
-	    hx-swap="outerHTML"
-	    nunjucks-template="navigation.njk"
-	    >navigation</button>
+	  <form id="navigation-form">
+	    <button
+	      id="navigation"
+	      style="cursor:pointer"
+	      hx-target="#navigation"
+	      hx-swap="outerHTML"
+	      nunjucks-template="navigation.njk"
+	      >navigation</button>
+	  </form>
 	</div>
 	<div id="document-container">
 	  <iframe id="document"></iframe>

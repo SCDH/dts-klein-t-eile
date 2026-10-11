@@ -29,5 +29,12 @@
       {% endif %}
     {% endfor %}
   </fieldset>
+  <input
+    type="hidden"
+    name="resource-template"
+    id="resource-template"
+    value="{{ resource.document }}"
+  ></input>
   {% include "navigation-portion.njk" %}
+  <button type="submit">Load</button>
 </div>

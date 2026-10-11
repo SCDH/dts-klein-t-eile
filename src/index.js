@@ -75,4 +75,31 @@ window.addEventListener('load', (event) => {
     });
 });
 
+window.addEventListener('load', (event) => {
+    const form = document.getElementById("navigation-form");
+    const iframe = document.getElementById("document");
+    form.addEventListener("submit", function(ev) {
+	ev.preventDefault();
+	const tree = document.querySelector('input[name="tree"]:checked').value;
+	const mode = document.querySelector('input[name="portion-mode"]:checked').value;
+	const ref = document.querySelector('#ref').value;
+	const start = document.querySelector('#start').value;
+	const end = document.querySelector('#end').value;
+	const resource = document.querySelector('#resource-template').value;
+	var portionParams = {};
+	if (mode == 'ref' && ref != "") {
+	    portionParams = { 'ref': ref };
+	} else if (mode == 'start-end' && start != "" && end != "" ) {
+	    portionParams = { 'start': start, 'end': end };
+	}
+	if (tree != "") {
+	    portionParams['tree'] = tree; // { portionParams ... 'tree': tree };
+	}
+	var resourceTemplate = parse(resource);
+	var resourceExpanded = resourceTemplate.expand(portionParams);
+	console.log("loading resource", portionParams, resourceExpanded);
+	iframe.src = resourceExpanded;
+    });
+});
+
 var entryEndpoint = undefined;
