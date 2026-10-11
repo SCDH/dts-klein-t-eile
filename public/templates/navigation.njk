@@ -1,59 +1,3 @@
-{% macro portion(nav) %}
-  <fieldset>
-    <legend>portion</legend>
-    <div>
-      <span class="portion-selector">
-	<input
-	  type="radio"
-		name="portion-mode"
-		id="portion-mode"
-		value="whole-document"
-		checked
-	>[whole document]</input>
-      </span>
-    </div>
-    <div>
-      <span class="portion-selector">
-	<input
-	  type="radio"
-		name="portion-mode"
-		id="portion-mode"
-		value="ref"
-	>ref (single unit)</input>
-      </span>
-      <select name="ref" id="ref">
-	<option value="">-- select a single unit (ref) --</option>
-	{% for m in nav.member %}
-	  <option value="{{ m.identifier }}">{{ m.identifier }} (level {{ m.level }})</option>
-	{% endfor %}
-      </select>
-    </div>
-    <div>
-      <span class="portion-selector">
-	<input
-	  type="radio"
-		name="portion-mode"
-		id="portion-mode"
-		value="start-end"
-	>start ... end</input>
-      </span>
-      <select name="start" id="start">
-	<option value="">-- select a start unit --</option>
-	{% for m in nav.member %}
-	  <option value="{{ m.identifier }}">{{ m.identifier }} (level {{ m.level }})</option>
-	{% endfor %}
-      </select>
-      <select name="end" id="end">
-	<option value="">-- select an end unit --</option>
-	{% for m in nav.member %}
-	  <option value="{{ m.identifier }}">{{ m.identifier }} (level {{ m.level }})</option>
-	{% endfor %}
-      </select>
-    </div>
-  </fieldset>
-{% endmacro %}
-
-
 <div id="navigation">
   <fieldset>
     <legend>Citation Tree</legend>
@@ -64,15 +8,26 @@
 	  name="tree"
 	  value="{{ citationTree.identifier }}"
 	  id="{{ citationTree.identifier }}"
-	  hx-get="{{ uriTemplate(navigation, { 'tree': citationTree }) }}"
+	  hx-get="{{ uriTemplate(resource.navigation, { 'tree': citationTree.identifier }) }}"
 	  hx-target="#portion"
-	  hx-swap="innerHTML"
-	  hx-trigger="select"
+	  hx-swap="outerHTML"
+	  hx-trigger="change"
+	  nunjucks-template="navigation-portion.njk"
 	>{{ citationTree.identifier }}</input>
       {% else %}
-	<input type="radio" name="tree" value="" id="default-tree" checked>[default]</input>
+	<input
+	  type="radio"
+	  name="tree"
+	  value=""
+	  id="default-tree"
+	  hx-get="{{ uriTemplate(resource.navigation, {}) }}"
+	  hx-target="#portion"
+	  hx-swap="outerHTML"
+	  hx-trigger="change"
+	  nunjucks-template="navigation-portion.njk"
+	  checked>[default]</input>
       {% endif %}
     {% endfor %}
   </fieldset>
-  {{ portion(getContext()) }}
+  {% include "navigation-portion.njk" %}
 </div>

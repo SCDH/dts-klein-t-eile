@@ -1,0 +1,52 @@
+<fieldset id="portion">
+    <legend>portion</legend>
+    <div>
+      <span class="portion-selector">
+	<input
+	  type="radio"
+		name="portion-mode"
+		id="portion-mode"
+		value="whole-document"
+		checked
+	>[whole document]</input>
+      </span>
+    </div>
+    <div>
+      <span class="portion-selector">
+	<input
+	  type="radio"
+		name="portion-mode"
+		id="portion-mode"
+		value="ref"
+	>ref (single unit)</input>
+      </span>
+      <select name="ref" id="ref">
+	<option value="">-- select a single unit (ref) --</option>
+	{% for m in member %}
+	  <option value="{{ m.identifier }}">{{ m.identifier }} (level {{ m.level }})</option>
+	{% endfor %}
+      </select>
+    </div>
+    <div>
+      <span class="portion-selector">
+	<input
+	  type="radio"
+		name="portion-mode"
+		id="portion-mode"
+		value="start-end"
+	>start ... end</input>
+      </span>
+      <select name="start" id="start">
+	<option value="">-- select a start unit --</option>
+	{% for m in member %}
+	  <option value="{{ m.identifier }}">{{ m.identifier }} (level {{ m.level }})</option>
+	{% endfor %}
+      </select>
+      <select name="end" id="end">
+	<option value="">-- select an end unit --</option>
+	{% for m in member %}
+	  <option value="{{ m.identifier }}">{{ m.identifier }} (level {{ m.level }})</option>
+	{% endfor %}
+      </select>
+    </div>
+</fieldset>
