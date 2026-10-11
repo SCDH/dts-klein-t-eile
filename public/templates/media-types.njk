@@ -1,0 +1,43 @@
+<div>
+  <fieldset class="media-types" id="media-types">
+    <legend>content type</legend>
+    {% if mediaTypes %}
+      {% for mediaType in mediaTypes %}
+	<input
+	  type="radio"
+	  name="mediaType"
+	  id="mediaType"
+	  value="{{ mediaType }}"
+	>{{ mediaType }}</input>
+      {% endfor %}
+    {% else %}
+      <input
+	type="radio"
+        name="mediaType"
+        id="mediaType"
+        value=""
+      >[default]</input>
+    {% endif %}
+  </fieldset>
+  <input
+    type="hidden"
+    name="resource-template"
+    id="resource-template"
+    value="{{ document }}"
+  ></input>
+  <div>
+    <button
+      id="navigation"
+      style="cursor:pointer"
+      hx-get="{{ uriTemplate(navigation, {}) }}"
+      hx-target="#navigation"
+      hx-swap="outerHTML"
+      nunjucks-template="navigation.njk"
+    >navigation</button>
+  </div>
+  <div>
+    <button type="submit">Load</button>
+  </div>
+</div>
+
+
