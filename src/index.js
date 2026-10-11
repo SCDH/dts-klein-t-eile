@@ -37,10 +37,14 @@ env.addGlobal('collectionRequestNo', function() {
     return collectionRequests;
 });
 
+
 console.log(env);
 
 // provide configured global numjucks object via window
 window.nunjucks = env;
+
+// make htmx object available for js function called directly in html/x
+window.htmx = htmx;
 
 
 window.addEventListener('load', (event) => {

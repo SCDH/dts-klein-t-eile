@@ -18,6 +18,7 @@
 	height: 100%;
     }
   </style>
+  <script src="src/fun.js"></script>
 </head>
 <body>
   <div hx-ext="client-side-templates" class="content-container">
@@ -36,19 +37,20 @@
       <div id="collection-container" class="column collection-tree">
       </div>
 
-      <div id="document-container">
-	<iframe id="document"></iframe>
+      <div id="resource-container">
+	<div id="navigation-container">
+	  <button
+	    id="navigation"
+	    style="cursor:pointer"
+	    >navigation</button>
+	</div>
+	<div id="document-container">
+	  <iframe id="document"></iframe>
+	</div>
       </div>
     </div>
 
   </div>
 
-  <script type="text/javascript">
-    function showDocument(uri) {
-	var slot = document.getElementById("document");
-	console.log("setting document", slot, uri);
-	slot.src = uri;
-    }
-  </script>
 </body>
 </html>

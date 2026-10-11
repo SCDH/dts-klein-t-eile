@@ -21,7 +21,7 @@
 	<button
 	  title="{{ uriTemplate(member.document, { 'mediaType': mediaType }) }}"
 	  style="cursor:pointer"
-	  hx-on:click="showDocument('{{ uriTemplate( member.document, { 'mediaType': mediaType } ) }}')"
+	  hx-on:click="showDocument('{{ uriTemplate( member.document, { 'mediaType': mediaType } ) }}'); activateNavigation('{{ uriTemplate( member.navigation, {} ) }}')"
 	>{{ mediaType }}</button>
 	<span class="delim"> </span>
       {% endfor %}
