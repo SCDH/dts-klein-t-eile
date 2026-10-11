@@ -17,6 +17,9 @@
 	width: 90%;
 	height: 100%;
     }
+    .portion-selector {
+	width: 30em;
+    }
   </style>
   <script src="src/fun.js"></script>
 </head>
@@ -42,6 +45,9 @@
 	  <button
 	    id="navigation"
 	    style="cursor:pointer"
+	    hx-target="#navigation"
+	    hx-swap="outerHTML"
+	    nunjucks-template="navigation.njk"
 	    >navigation</button>
 	</div>
 	<div id="document-container">
