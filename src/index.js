@@ -81,11 +81,11 @@ window.addEventListener('load', (event) => {
     form.addEventListener("submit", function(ev) {
 	ev.preventDefault();
 	const mediaType = document.querySelector('input[name="mediaType"]:checked').value;
-	const tree = document.querySelector('input[name="tree"]:checked').value;
-	const mode = document.querySelector('input[name="portion-mode"]:checked').value;
-	const ref = document.querySelector('#ref').value;
-	const start = document.querySelector('#start').value;
-	const end = document.querySelector('#end').value;
+	const tree = document.querySelector('input[name="tree"]:checked')?.value ?? "";
+	const mode = document.querySelector('input[name="portion-mode"]:checked')?.value ?? "";
+	const ref = document.querySelector('#ref')?.value ?? "";
+	const start = document.querySelector('#start')?.value ?? "";
+	const end = document.querySelector('#end')?.value ?? "";
 	const resource = document.querySelector('#resource-template').value;
 	var portionParams = {};
 	if (mode == 'ref' && ref != "") {
