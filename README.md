@@ -65,9 +65,13 @@ simply run `npm i && npm run dev`.
 
 ## Technical Details
 
-- [htmx](htmx.org) for sending requests a inserting responses into the HTML DOM
-- [Nunjucks](https://mozilla.github.io/nunjucks/) templates for transforming JSON data to HTML snippets
-- a RCF6570 conforming [library]() for expanding URI templates
+- [htmx](htmx.org) for sending requests and inserting responses into
+  the HTML DOM
+- [Nunjucks](https://mozilla.github.io/nunjucks/) templates for
+  transforming JSON responses to HTML snippets
+- a RCF6570 conforming
+  [library](https://www.npmjs.com/package/uri-template) for expanding
+  URI templates
 - Vite as dev server and JS bundler
 
 
