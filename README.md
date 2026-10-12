@@ -1,7 +1,23 @@
-# DTS Klein T eilt
+# DTS Klein T eile
+
+*DTS Klein T eile* is the warthog amongst
+[DTS](https://dtsapi.org/specifications/) browser clients. It doesn't
+want to look nice or offer convenient UX. It's only purpose is to
+demonstrate, how communication with distributed text services works:
+Which API calls have to be done? Which follow-up calls are possible?
+How to gather information in order to make the call you wish?
 
 
 ## Getting Started
+
+### Online
+
+Visit the github pages site of this repo:
+
+Enter the URI of a DTS entry endpoint into the form and everything
+will unfold with your clicks ...
+
+### Building
 
 This project uses a dev container for minimizing the blast radius of
 potential nodejs supply chain attacks. If you do not use an editor
@@ -46,3 +62,16 @@ devcontainer exec bash
 If you are more concered about installing the Dev Container CLI than
 about exposing your computer to supply chain attacks, feel free to
 simply run `npm i && npm run dev`.
+
+## Technical Details
+
+- [htmx](htmx.org) for sending requests a inserting responses into the HTML DOM
+- [Nunjucks](https://mozilla.github.io/nunjucks/) templates for transforming JSON data to HTML snippets
+- a RCF6570 conforming [library]() for expanding URI templates
+- Vite as dev server and JS bundler
+
+
+## License
+
+This project is licensed under CC0. You can reuse it or its components
+without credeting the original authors.
