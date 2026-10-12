@@ -80,7 +80,7 @@ window.addEventListener('load', (event) => {
     const iframe = document.getElementById("document");
     form.addEventListener("submit", function(ev) {
 	ev.preventDefault();
-	const mediaType = document.querySelector('input[name="mediaType"]:checked').value;
+	const mediaType = document.querySelector('input[name="mediaType"]:checked')?.value ?? "";
 	const tree = document.querySelector('input[name="tree"]:checked')?.value ?? "";
 	const mode = document.querySelector('input[name="portion-mode"]:checked')?.value ?? "";
 	const ref = document.querySelector('#ref')?.value ?? "";
