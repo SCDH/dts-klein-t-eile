@@ -4,7 +4,7 @@
 [DTS](https://dtsapi.org/specifications/) browser clients. It doesn't
 want to look nice or offer convenient UX. It's only purpose is to
 demonstrate, how communication with distributed text services works:
-Which API calls have to be done? Which follow-up calls are possible?
+Which API calls have to be made? Which follow-up calls are possible?
 How to gather information in order to make the call you wish?
 
 
