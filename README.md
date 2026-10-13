@@ -2,7 +2,7 @@
 
 *DTS Klein T eile* is the warthog amongst
 [DTS](https://dtsapi.org/specifications/) browser clients. It doesn't
-want to look nice or offer convenient UX. It's only purpose is to
+want to look nice or offer convenient UX. Its only purpose is to
 demonstrate, how communication with distributed text services works:
 Which API calls have to be made? Which follow-up calls are possible?
 How to gather information in order to make the call you wish?
@@ -22,7 +22,9 @@ will unfold with your clicks ...
 This project uses a dev container for minimizing the blast radius of
 potential nodejs supply chain attacks. If you do not use an editor
 that can spin up the container, you can use the [Dev Container
-CLI](https://github.com/devcontainers/cli) instead.
+CLI](https://github.com/devcontainers/cli) instead. With a dev
+container, no nodejs installation is required on your local machine;
+but docker is required.
 
 `cd` into the cloned project and spin up the devcontainer from the
 commandline:
@@ -57,7 +59,6 @@ Get a shell in the container:
 ```shell
 devcontainer exec bash
 ```
-
 
 If you are more concered about installing the Dev Container CLI than
 about exposing your computer to supply chain attacks, feel free to
