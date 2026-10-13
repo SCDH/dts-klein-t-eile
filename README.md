@@ -12,7 +12,7 @@ How to gather information in order to make the call you wish?
 
 ### Online
 
-Visit the github pages site of this repo:
+Visit the github pages site of this repo: https://scdh.github.io/dts-klein-t-eile/
 
 Enter the URI of a DTS entry endpoint into the form and everything
 will unfold with your clicks ...
