@@ -1,0 +1,33 @@
+<div id="navigation">
+  <fieldset>
+    <legend>Citation Tree</legend>
+    {% for citationTree in resource.citationTrees %}
+      {% if citationTree.identifier %}
+	<input
+	  type="radio"
+	  name="tree"
+	  value="{{ citationTree.identifier }}"
+	  id="{{ citationTree.identifier }}"
+	  hx-get="{{ uriTemplate(resource.navigation, { 'tree': citationTree.identifier }) }}"
+	  hx-target="#portion"
+	  hx-swap="outerHTML"
+	  hx-trigger="change"
+	  nunjucks-template="navigation-portion.njk"
+	>{{ citationTree.identifier }}</input>
+      {% else %}
+	<input
+	  type="radio"
+	  name="tree"
+	  value=""
+	  id="default-tree"
+	  hx-get="{{ uriTemplate(resource.navigation, {}) }}"
+	  hx-target="#portion"
+	  hx-swap="outerHTML"
+	  hx-trigger="change"
+	  nunjucks-template="navigation-portion.njk"
+	  checked>[default]</input>
+      {% endif %}
+    {% endfor %}
+  </fieldset>
+  {% include "navigation-portion.njk" %}
+</div>

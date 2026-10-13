@@ -1,0 +1,39 @@
+{% macro metadata(member) %}
+<div>{{ member.@type }}</div>
+<div>{{ member.title }}</div>
+{% endmacro %}
+
+{% macro collectionItem(member, id) %}
+<li id="collection-item-{{ id }}" class="collection-item {{ member.@type }}">
+  {{ metadata(member) }}
+  {% if member.@type == 'Collection' %}
+    <button
+      hx-get="{{ uriTemplate(member.collection, {}) }}"
+      hx-swap="innerHTML"
+      hx-target="#collection-item-{{ id }}"
+      nunjucks-template="collection.njk"
+    >{{ uriTemplate(member.collection, {}) }}</button>
+  {% elif member.@type == 'Resource' %}
+    <button
+      hx-get="{{ uriTemplate(member.collection, {}) }}"
+      hx-swap="innnerHTML"
+      hx-target="#navigation-form"
+      nunjucks-template="media-types.njk"
+    >{{ uriTemplate(member.collection, {}) }}</button>
+  {% endif %}
+</li>
+{% endmacro %}
+
+
+<li class="collection-item {{ @type }}">
+  {{ metadata(getContext()) }}
+
+  {% if member %}
+  <ul class="collection">
+    {% for m in member %}
+    {{ collectionItem(m, collectionRequestNo()) }}
+    {% endfor %}
+  </ul>
+  {% endif %}
+
+</li>
